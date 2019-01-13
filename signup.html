@@ -23,7 +23,7 @@
         <div class="subheader">
             Please provide the following information
         </div>
-        <form class="normaltext" id="form1" action="signin.html">
+        <form class="normaltext" id="form1">
             <label><i class="fa fa-envelope"></i>Email</label><br>
             <input type="email" required placeholder="chirchir@gmail.com" id="email"><br>
             <label class="fa  fa-user">full name</label><br>
@@ -35,7 +35,7 @@
             <label class="fa fa-key">confirm password</label><br>
             <input type="password" placeholder="******" id="password1"><br>
             <button type="cancel" id="button_failed" form="form1" value="cancel">Cancel</button>
-            <button type="submit" id="button_success" form="form1" value="Submit">Submit</button>
+            <button type="button" onClick="signUp()" id="button_success">Submit</button>
         </form>
     </div>
     <div class="footnote">
@@ -49,13 +49,15 @@
     </div>
 </div>
 <script>
-    function signup() {
+    function signUp() {
         let email = document.getElementById("email").value;
         let fullname = document.getElementById("fullname").value;
         let phonenumber = document.getElementById("phonenumber").value;
         let password = document.getElementById("password").value;
         let password1 = document.getElementById("password1").value;
-        
+        if(password != password1){
+            alert("password does not match")
+        }
 }
 </script>
 </body>
