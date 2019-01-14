@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sendit!</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+<div class="topnav">
+    <div class="allign-right">
+        <a class="active"><span>Home</span></a>
+        <a id="left-login"><span>Chirchir</span></a>
+    </div>
+</div>
+<div class="right_nav">
+    <ul>
+        <li><a href="dashboard.html">Home</a></li>
+        <li><a href="history.html">My parcels</a></li>
+        <li><a href="profile.html">Myprofile</a></li>
+    </ul>
+</div>
+<div class="dashboard_content">
+    <div class="dashboard_content">
+        <form class="normaltext" >
+            <label><i class="fa fa-truck"></i>Type of parcel</label><br>
+            <input type="text" required placeholder="letter"><br>
+            <label class="fa fa-address-book">Adress</label><br>
+            <input type="text" required placeholder="5th street moi avenue"><br>
+            <label class="fa fa-phone">Phone number of the recepient</label><br>
+            <input type="number" required placeholder="254715428709"><br>
+            <label class="fa fa-building">Town</label><br>
+            <input type="text" required placeholder="Nairobi"><br>
+            <label class="fa fa-flag">Building Name</label><br>
+            <input type="text" placeholder="Nation centre"><br>
+            <label class="fa fa-calender-alt">estimated weight</label>
+            <select>
+                <option selected value="1">below 1kg</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">Above 5</option>
+            </select><br>
+            <label class="fa fa-notebook">Addition comments</label>
+            <textarea rows="4" cols="50" placeholder="Fragile handle with care or flamable"></textarea><br>
+
+            <button id="button_failed" onclick="Cancelled()">Cancel</button>
+            <button  id="button_success"  onclick="Ordered()">Submit</button><br>
+        </form>
+    </div>
+    <div class="header">
+       <br> On trasit
+    </div>
+    <table class="normaltext">
+        <tr>
+            <th>Type of parcel</th>
+            <th>Adress</th>
+            <th>Recepient No</th>
+            <th>Town</th>
+            <th>Building</th>
+            <th>estimated weight</th>
+            <th>update</th>
+            <th>cancel</th>
+        </tr>
+        <tr>
+            <td contenteditable="true">Letter</td>
+            <td contenteditable="true">542 Nanyuki</td>
+            <td contenteditable="true">254715428798</td>
+            <td contenteditable="true">Nairobi</td>
+            <td contenteditable="true">Alyusra</td>
+            <td contenteditable="true">1 KG</td>
+            <td><button onclick="Changed()" class="confirm" value="Submit">change</button></td>
+            <td><button onclick="Cancelled()" class="cancel" value="Submit">cancel</button></td>
+        </tr>
+        <tr>
+            <td contenteditable="true">Letter</td>
+            <td contenteditable="true">542 Nanyuki</td>
+            <td contenteditable="true">254715428798</td>
+            <td contenteditable="true">Nairobi</td>
+            <td contenteditable="true">Alyusra</td>
+            <td contenteditable="true">1 KG</td>
+            <td><button onclick="Changed()" class="confirm" value="Submit">change</button></td>
+            <td><button onclick="Cancelled()" class="cancel" value="Submit">cancel</button></td>
+        </tr>
+        <tr>
+            <td contenteditable="true">Letter</td>
+            <td contenteditable="true">542 Nanyuki</td>
+            <td contenteditable="true">254715428798</td>
+            <td contenteditable="true">Nairobi</td>
+            <td contenteditable="true">Alyusra</td>
+            <td contenteditable="true">1 KG</td>
+            <td><button onclick="Changed()" class="confirm" value="Submit">change</button></td>
+            <td><button onclick="Cancelled()" class="cancel" value="Submit">cancel</button></td>
+        </tr>
+        <tr>
+            <td contenteditable="true">Letter</td>
+            <td contenteditable="true">542 Nanyuki</td>
+            <td contenteditable="true">254715428798</td>
+            <td contenteditable="true">Nairobi</td>
+            <td contenteditable="true">Alyusra</td>
+            <td contenteditable="true">1 KG</td>
+            <td><button onclick="Changed()" class="confirm" value="Submit">change</button></td>
+            <td><button onclick="Cancelled()" value="Submit" class="cancel">cancel</button></td>
+        </tr>
+        <tr>
+            <td contenteditable="true">Letter</td>
+            <td contenteditable="true">542 Nanyuki</td>
+            <td contenteditable="true">254715428798</td>
+            <td contenteditable="true">Nairobi</td>
+            <td contenteditable="true">Alyusra</td>
+            <td contenteditable="true">1 KG</td>
+            <td><button onclick="Changed()" class="confirm" >change</button></td>
+            <td><button onclick="Cancelled()"  class="cancel">cancel</button></td>
+        </tr>
+    </table>
+
+</div>
+    <div class="footnote">
+        <i>find us on<br><i></i>
+        <a href="https://www.twitter.com/"><i class="fa fa-twitter" id="objects">twitter</i></a><br>
+        <a href="https://www.facebook.com"><span class="fa fa-facebook" id="objects">facebook</span></a><br>
+        <a href="https://github.com/Kibetchirchir"><span class="fa fa-github" id="objects">github</span></a><br>
+        <a href="https://www.youtube.com"><span class="fa fa-youtube" id="youtube_object">youtube</span></a><br>
+
+        <i> copyright sendit <span class="fa fa-copyright">2018
+    </div>
+</div>
+</body>
+<script>
+function Cancelled() {
+    alert("Cancelled!");
+}
+</script>
+<script>
+function Ordered() {
+    alert("Ordered made!");
+}
+</script>
+<script>
+function Changed() {
+    alert("Order changed!");
+}
+</script>
+</html>
