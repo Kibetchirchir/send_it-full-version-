@@ -151,7 +151,6 @@ function makeOrder() {
             recepient_number : recepientNumber,
             weight : weight
         }
-        console.log(localStorage.getItem('token'))
         fetch(parcel_url, {
             method: 'POST',
             body: JSON.stringify(parcel_data),
@@ -162,7 +161,12 @@ function makeOrder() {
         })
         .then(res => res.json())
         .then(response => {
-            console.log(response)
+            if(response.status === "added"){
+                alert("successfully added")
+                location.reload();
+            } else {
+                alert(response.message)
+            }
         })
         .catch(error => alert("OOPS try again"));
 }
