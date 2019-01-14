@@ -26,17 +26,17 @@
     <div class="dashboard_content">
         <form class="normaltext" >
             <label><i class="fa fa-truck"></i>Type of parcel</label><br>
-            <input type="text" required placeholder="letter"><br>
-            <label class="fa fa-address-book">Adress</label><br>
-            <input type="text" required placeholder="5th street moi avenue"><br>
+            <input type="text" required placeholder="letter" id="type"><br>
+            <label class="fa fa-address-book">Pick-up Adress</label><br>
+            <input type="text" required placeholder="5th street moi avenue" id="pick_up_place"><br>
+            <label><i class="fa fa-user"></i>Name of Recepient</label><br>
+            <input type="text" required placeholder="Chirchir Kelvin" id="recepientName"><br>
             <label class="fa fa-phone">Phone number of the recepient</label><br>
-            <input type="number" required placeholder="254715428709"><br>
-            <label class="fa fa-building">Town</label><br>
-            <input type="text" required placeholder="Nairobi"><br>
-            <label class="fa fa-flag">Building Name</label><br>
-            <input type="text" placeholder="Nation centre"><br>
+            <input type="number" required placeholder="254715428709" id="tel_number"><br>
+            <label class="fa fa-building">Drop off place</label><br>
+            <input type="text" required placeholder="Nairobi" id="droping_place"><br>
             <label class="fa fa-calender-alt">estimated weight</label>
-            <select>
+            <select id="weight">
                 <option selected value="1">below 1kg</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -47,7 +47,7 @@
             <textarea rows="4" cols="50" placeholder="Fragile handle with care or flamable"></textarea><br>
 
             <button id="button_failed" onclick="Cancelled()">Cancel</button>
-            <button  id="button_success"  onclick="Ordered()">Submit</button><br>
+            <button type="button"  id="button_success"  onclick="makeOrder()">Submit</button><br>
         </form>
     </div>
     <div class="header">
@@ -134,8 +134,25 @@ function Cancelled() {
 }
 </script>
 <script>
-function Ordered() {
-    alert("Ordered made!");
+function makeOrder() {
+        // getting the form values
+        let type = document.getElementById("type").value;
+        let dropOff = document.getElementById("droping_place").value;
+        let pickUp = document.getElementById("pick_up_place").value;
+        let recepientName = document.getElementById("recepientName").value;
+        let recepientNumber = document.getElementById("tel_number").value;
+        let weight = document.getElementById("weight").value;
+        let signup_url = "https://senditv2.herokuapp.com/api/v2/parcels";
+        let parcel_data = {
+            parcel_type : type,
+            drop_off_location : dropOff,
+            pick_up_location : pickUp,
+            status : "picked",
+            recepient_name : "user",
+            recepient_number : recepientNumber,
+            weight : weight
+        }
+        console.log(parcel_data)
 }
 </script>
 <script>
