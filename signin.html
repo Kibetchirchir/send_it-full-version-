@@ -26,24 +26,56 @@
         <div class="normaltext">
             <form id="form1" action="dashboard.html">
                 <label class="fa fa-envelope">Email</label><br>
-                <input type="email" required placeholder="chirchir@gmail.com"><br>
+                <input type="email" required placeholder="chirchir@gmail.com" id="email"><br>
                 <label class="fa fa-key">Password</label><br>
-                <input type="password" required placeholder="**********"><br>
+                <input type="password" required placeholder="**********" id="password"><br>
             <button type="cancel" id="button_failed" form="form1" value="cancel">Cancel</button>
-            <button type="submit" id="button_success" form="form1" value="Submit">Login</button>
+            <button type="button" id="button_success" onclick="signIn()">Login</button>
             </form>
         </div>
     </div>
 </div>
 
     <div id="footnote">
-        <i>find us on<br><i></i>
+        <i>find us on<br></i>
         <a href="https://www.twitter.com/"><i class="fa fa-twitter" id="objects">twitter</i></a><br>
         <a href="https://www.facebook.com"><span class="fa fa-facebook" id="objects">facebook</span></a><br>
         <a href="https://github.com/Kibetchirchir"><span class="fa fa-github" id="objects">github</span></a><br>
         <a href="https://www.youtube.com"><span class="fa fa-youtube" id="youtube_object">youtube</span></a><br>
 
-        <i> copyright sendit <span class="fa fa-copyright">2018
+        <i> copyright sendit <span class="fa fa-copyright">2018</span></i>
     </div>
 </div>
 </body>
+<script>
+    function signIn() {
+        // getting the form values
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let signin_url = "https://senditv2.herokuapp.com/api/v2/auth/login";
+        let signin_data = {
+            email : email,
+            password : password,
+            role : "user"
+        }
+        // sending data to our end point
+        fetch(signin_url, {
+            method: 'POST',
+            body: JSON.stringify(signin_data),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(response => {
+            if(response.status === "success"){
+                alert("successfully login")
+                window.location.href='dashboard.html';
+            } else {
+                alert(response.message)
+            }
+        })
+        .catch(error => alert("OOPS try again"));
+}
+</script>
+</html>
