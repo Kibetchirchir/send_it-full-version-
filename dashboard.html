@@ -47,7 +47,7 @@
             <textarea rows="4" cols="50" placeholder="Fragile handle with care or flamable"></textarea><br>
 
             <button id="button_failed" onclick="Cancelled()">Cancel</button>
-            <button type="button"  id="button_success"  onclick="makeOrder()">Submit</button><br>
+            <button type="button" onClick="makeOrder()" id="button_success">Submit</button>
         </form>
     </div>
     <div class="header">
@@ -127,8 +127,7 @@
         <i> copyright sendit <span class="fa fa-copyright">2018
     </div>
 </div>
-</body>
-<script>
+<script type="text/javascript"></script>
 function Cancelled() {
     alert("Cancelled!");
 }
@@ -142,7 +141,7 @@ function makeOrder() {
         let recepientName = document.getElementById("recepientName").value;
         let recepientNumber = document.getElementById("tel_number").value;
         let weight = document.getElementById("weight").value;
-        let signup_url = "https://senditv2.herokuapp.com/api/v2/parcels";
+        let parcel_url = "https://senditv2.herokuapp.com/api/v2/parcels";
         let parcel_data = {
             parcel_type : type,
             drop_off_location : dropOff,
@@ -152,7 +151,20 @@ function makeOrder() {
             recepient_number : recepientNumber,
             weight : weight
         }
-        console.log(parcel_data)
+        console.log(localStorage.getItem('token'))
+        fetch(parcel_url, {
+            method: 'POST',
+            body: JSON.stringify(parcel_data),
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : "Bearer " + localStorage.getItem('token') 
+            }
+        })
+        .then(res => res.json())
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => alert("OOPS try again"));
 }
 </script>
 <script>
@@ -160,4 +172,5 @@ function Changed() {
     alert("Order changed!");
 }
 </script>
+</body>
 </html>
