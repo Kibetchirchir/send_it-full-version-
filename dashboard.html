@@ -8,7 +8,7 @@
 
 
 </head>
-<body>
+<body onload="allParcels()">
 <div class="topnav">
     <div class="allign-right">
         <a class="active"><span>Home</span></a>
@@ -127,7 +127,7 @@
         <i> copyright sendit <span class="fa fa-copyright">2018
     </div>
 </div>
-<script type="text/javascript"></script>
+<script type="text/javascript">
 function Cancelled() {
     alert("Cancelled!");
 }
@@ -169,6 +169,21 @@ function makeOrder() {
             }
         })
         .catch(error => alert("OOPS try again"));
+}
+function allParcels() {
+    let parcel_url = "https://senditv2.herokuapp.com/api/v2/parcels";
+    fetch(parcel_url, {
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : "Bearer " + localStorage.getItem('token') 
+            }
+        })
+        .then(res => res.json())
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => alert("OOPS try again"));    
 }
 </script>
 <script>
