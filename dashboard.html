@@ -8,7 +8,7 @@
 
 
 </head>
-<body>
+<body onload="allParcels()">
 <div class="topnav">
     <div class="allign-right">
         <a class="active"><span>Home</span></a>
@@ -51,71 +51,20 @@
         </form>
     </div>
     <div class="header">
-       <br> On trasit
+        <br><br><br> On trasit
     </div>
-    <table class="normaltext">
+    <table class="normaltext" id="data">
         <tr>
             <th>Type of parcel</th>
-            <th>Adress</th>
+            <th>Pick Up Point</th>
             <th>Recepient No</th>
-            <th>Town</th>
-            <th>Building</th>
+            <th>Recepient Name</th>
+            <th>Drop off</th>
             <th>estimated weight</th>
             <th>update</th>
             <th>cancel</th>
         </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td><button onclick="Changed()" class="confirm" value="Submit">change</button></td>
-            <td><button onclick="Cancelled()" class="cancel" value="Submit">cancel</button></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td><button onclick="Changed()" class="confirm" value="Submit">change</button></td>
-            <td><button onclick="Cancelled()" class="cancel" value="Submit">cancel</button></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td><button onclick="Changed()" class="confirm" value="Submit">change</button></td>
-            <td><button onclick="Cancelled()" class="cancel" value="Submit">cancel</button></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td><button onclick="Changed()" class="confirm" value="Submit">change</button></td>
-            <td><button onclick="Cancelled()" value="Submit" class="cancel">cancel</button></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td><button onclick="Changed()" class="confirm" >change</button></td>
-            <td><button onclick="Cancelled()"  class="cancel">cancel</button></td>
-        </tr>
     </table>
-
 </div>
     <div class="footnote">
         <i>find us on<br><i></i>
@@ -127,7 +76,7 @@
         <i> copyright sendit <span class="fa fa-copyright">2018
     </div>
 </div>
-<script type="text/javascript"></script>
+<script type="text/javascript">
 function Cancelled() {
     alert("Cancelled!");
 }
@@ -147,7 +96,7 @@ function makeOrder() {
             drop_off_location : dropOff,
             pick_up_location : pickUp,
             status : "picked",
-            recepient_name : "user",
+            recepient_name : recepientName,
             recepient_number : recepientNumber,
             weight : weight
         }
@@ -169,6 +118,43 @@ function makeOrder() {
             }
         })
         .catch(error => alert("OOPS try again"));
+}
+function allParcels() {
+    let parcel_url = "https://senditv2.herokuapp.com/api/v2/parcels";
+    fetch(parcel_url, {
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : "Bearer " + localStorage.getItem('token') 
+            }
+        })
+        .then(res => res.json())
+        .then(response => {
+            // console.log(response)
+            let parcels = response.message
+            displayTable(parcels)
+        })
+        .catch(error => {
+            alert("OOPS try again")
+        });    
+}
+function displayTable(parcels){
+    parcels.forEach(item => {
+            if (item.status != "delivered") {
+              let tr = document.createElement("tr");
+              tr.innerHTML = `
+                    <td contenteditable="true">${item.parcel_type}</td>
+                    <td contenteditable="true">${item.drop_off}</td>
+                    <td contenteditable="true">${item.Recepient_number}</td>
+                    <td contenteditable="true">${item.Recepeint_name}</td>
+                    <td contenteditable="true">${item.drop_off}</td>
+                    <td contenteditable="true">${item.Weight}</td>
+                    <td><button onclick="Changed()" class="confirm" value="Submit">change</button></td>
+                    <td><button onclick="Cancelled()" class="cancel" value="Submit">cancel</button></td>
+                    `;
+              document.getElementById("data").appendChild(tr);
+            }
+          });
 }
 </script>
 <script>
