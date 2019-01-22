@@ -8,7 +8,7 @@
 
 
 </head>
-<body>
+<body onload="allParcels()">
 <div class="topnav">
     <div class="allign-right">
         <a class="active"><span>Home</span></a>
@@ -42,255 +42,20 @@
             <th>date</th>
             <th>status</th>
         </tr>
+    </table>
+    <div class="header">
+        <br> Delivered <span class="fa fa-tick"></span>
+    </div>
+    <table class="normaltext" id="delivered">
         <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>ontrasit<span class="fa fa-truck"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>ontrasit<span class="fa fa-truck"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>ontrasit<span class="fa fa-truck"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>ontrasit<span class="fa fa-truck"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>ontrasit<span class="fa fa-truck"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>ontrasit<span class="fa fa-truck"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>ontrasit<span class="fa fa-truck"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>ontrasit<span class="fa fa-truck"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>ontrasit<span class="fa fa-truck"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>ontrasit<span class="fa fa-truck"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">Letter</td>
-            <td contenteditable="true">542 Nanyuki</td>
-            <td contenteditable="true">254715428798</td>
-            <td contenteditable="true">Nairobi</td>
-            <td contenteditable="true">Alyusra</td>
-            <td contenteditable="true">1 KG</td>
-            <td>12/01/2018</td>
-            <td>delivered<span class="fa fa-check"></span></td>
+            <th>Type of parcel</th>
+            <th>Adress</th>
+            <th>Recepient No</th>
+            <th>Town</th>
+            <th>Building</th>
+            <th>estimated weight</th>
+            <th>date</th>
+            <th>status</th>
         </tr>
     </table>
 
