@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sendit!</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body onload="allParcels()">
+<div class="topnav">
+    <div class="allign-right">
+        <a class="active"><span>Home</span></a>
+        <a id="left-login"><span>Chirchir</span></a>
+    </div>
+</div>
+<div class="right_nav">
+    <ul>
+        <li><a href="dashboard.html">Home</a></li>
+        <li><a href="history.html">My parcels</a></li>
+        <li><a href="profile.html">Myprofile</a></li>
+    </ul>
+</div>
+<div class="dashboard_content">
+    <div class="dashboard_content">
+    </div>
+    <div class="header">
+        <br> History
+    </div>
+    <div class="header">
+        <br> On transit <span class="fa fa-truck"></span>
+    </div>
+    <table class="normaltext" id="data">
+        <tr>
+            <th>Transaction</th>
+            <th>Type of parcel</th>
+            <th>Adress</th>
+            <th>Recepient No</th>
+            <th>Town</th>
+            <th>Building</th>
+            <th>estimated weight</th>
+            <th>date</th>
+            <th>status</th>
+        </tr>
+    </table>
+    <div class="header">
+        <br> Delivered <span class="fa fa-tick"></span>
+    </div>
+    <table class="normaltext" id="delivered">
+        <tr>
+            <th>Transaction</th>
+            <th>Type of parcel</th>
+            <th>Adress</th>
+            <th>Recepient No</th>
+            <th>Town</th>
+            <th>Building</th>
+            <th>estimated weight</th>
+            <th>date</th>
+            <th>status</th>
+        </tr>
+    </table>
+</div>
+    <div class="footnote">
+        <i>find us on<br><i></i>
+        <a href="https://www.twitter.com/"><i class="fa fa-twitter" id="objects">twitter</i></a><br>
+        <a href="https://www.facebook.com"><span class="fa fa-facebook" id="objects">facebook</span></a><br>
+        <a href="https://github.com/Kibetchirchir"><span class="fa fa-github" id="objects">github</span></a><br>
+        <a href="https://www.youtube.com"><span class="fa fa-youtube" id="youtube_object">youtube</span></a><br>
+
+        <i> copyright sendit <span class="fa fa-copyright">2018
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    function allParcels() {
+    let parcel_url = "https://senditv2.herokuapp.com/api/v2/parcels";
+    fetch(parcel_url, {
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : "Bearer " + localStorage.getItem('token') 
+            }
+        })
+        .then(res => res.json())
+        .then(response => {
+            // console.log(response)
+            let parcels = response.message
+            displayTable(parcels)
+        })
+        .catch(error => {
+            alert("OOPS try again")
+            console.log(error)
+        });    
+}
+function displayTable(parcels){
+    parcels.forEach(item => {
+            if (item.status != "delivered") {
+              let tr = document.createElement("tr");
+              tr.innerHTML = `
+                    <td contenteditable="true">${item.parcel_id}</td>
+                    <td contenteditable="true">${item.parcel_type}</td>
+                    <td contenteditable="true">${item.drop_off}</td>
+                    <td contenteditable="true">${item.Recepient_number}</td>
+                    <td contenteditable="true">${item.Recepeint_name}</td>
+                    <td contenteditable="true">${item.drop_off}</td>
+                    <td contenteditable="true">${item.Weight}</td>
+                    <td>${item.date_ordered}</td>
+                    <td>ontrasit<span class="fa fa-truck"></span></td>
+                    `;
+              document.getElementById("data").appendChild(tr);
+            }
+            if(item.status === "delivered"){
+                let tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td contenteditable="true">${item.parcel_id}</td>
+                    <td contenteditable="true">${item.parcel_type}</td>
+                    <td contenteditable="true">${item.drop_off}</td>
+                    <td contenteditable="true">${item.Recepient_number}</td>
+                    <td contenteditable="true">${item.Recepeint_name}</td>
+                    <td contenteditable="true">${item.drop_off}</td>
+                    <td contenteditable="true">${item.Weight}</td>
+                    <td>${item.date_ordered}</td>
+                    <td>delivered<span class="fa fa-check"></span></td>
+                    `;
+                document.getElementById("delivered").appendChild(tr);
+            }
+          });
+}
+</script>
+</html>
