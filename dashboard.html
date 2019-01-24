@@ -175,7 +175,7 @@ function Changed(parcel_id) {
         .then(res => res.json())
         .then(response => {
             if(response.status === "success"){
-                alert(destination changed. Note only destination can be changed)
+                alert("destination changed to " + dropOff +". Note only destination can be changed")
             } else {
                 alert(response.message)
             }
