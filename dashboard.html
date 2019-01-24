@@ -158,14 +158,12 @@ function displayTable(parcels){
 }
 
 function Changed(parcel_id) {
-    // let dropOff = document.getElementById ( "drop_off" ).innerText
-    let dest = "nai"
+    let dropOff = document.getElementById ( "drop_off" ).innerText
     let dest_url = "https://senditv2.herokuapp.com/api/v2/parcels/" + parcel_id +"/destination";
     console.log(dest_url)
     let destination = {
-        dest : dest
+        dest : dropOff
     }
-    console.log(JSON.stringify(destination))
     fetch(dest_url, {
             method: 'PUT',
             body: JSON.stringify(destination),
@@ -177,15 +175,13 @@ function Changed(parcel_id) {
         .then(res => res.json())
         .then(response => {
             if(response.status === "success"){
-                alert(response)
-                console.log(response)
+                alert(destination changed. Note only destination can be changed)
             } else {
                 alert(response.message)
             }
         })
         .catch(error => {
             alert("OOPS try again")
-            console.log(error)
         });
 }
 </script>
