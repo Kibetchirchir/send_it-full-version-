@@ -59,7 +59,7 @@
         <div class="header">
             <br> Delivered <span class="fa fa-check"></span>
         </div>
-        <table class="normaltext">
+        <table class="normaltext" id="delivered">
             <tr>
                 <th>Type of parcel</th>
                 <th>Adress</th>
@@ -68,15 +68,6 @@
                 <th>Building</th>
                 <th>estimated weight</th>
                 <th>Delivered</th>
-            </tr>
-            <tr>
-                <td contenteditable="true">Letter</td>
-                <td contenteditable="true">542 Nanyuki</td>
-                <td contenteditable="true">254715428798</td>
-                <td contenteditable="true">Nairobi</td>
-                <td contenteditable="true">Alyusra</td>
-                <td contenteditable="true">1 KG</td>
-                <td><button type="submit" form="form1" class="confirm" value="Submit">delivered</button></td>
             </tr>
         </table>
 
@@ -139,7 +130,7 @@ function displayTable(parcels){
                 tr.innerHTML = `
                     <td contenteditable="true">${item.parcel_id}</td>
                     <td contenteditable="true">${item.parcel_type}</td>
-                    <td contenteditable="true">${item.drop_off}</td>
+                    <td contenteditableallParcels()="true">${item.drop_off}</td>
                     <td contenteditable="true">${item.Recepient_number}</td>
                     <td contenteditable="true">${item.Recepeint_name}</td>
                     <td contenteditable="true">${item.drop_off}</td>
