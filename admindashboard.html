@@ -49,11 +49,11 @@
                 <th>Adress</th>
                 <th>Recepient No</th>
                 <th>Recepient Name</th>
-                <th>Building</th>
+                <th>Current Loc.</th>
                 <th>estimated weight</th>
                 <th>status</th>
-                <th>update</th>
-                <th>cancel</th>
+                <th>update status</th>
+                <th>update location</th>
             </tr>
         </table>
         <div class="header">
@@ -117,7 +117,7 @@ function displayTable(parcels){
                     <td contenteditable="true">${item.drop_off}</td>
                     <td contenteditable="true">${item.Recepient_number}</td>
                     <td contenteditable="true">${item.Recepeint_name}</td>
-                    <td contenteditable="true">${item.drop_off}</td>
+                    <td contenteditable="true" id="location">${item.drop_off}</td>
                     <td contenteditable="true">${item.Weight}</td>
                     <td id="status" contenteditable="true">${item.status}<span class="fa fa-truck"></span></td>
                     <td><button onclick="updateStatus('${item.parcel_id}')" class="confirm" value="Submit">change status</button></td>
@@ -150,6 +150,36 @@ function updateStatus(parcel_id) {
         status : status
     }
     fetch(dest_url, {
+            method: 'PUT',
+            body: JSON.stringify(destination),
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : "Bearer " + localStorage.getItem('token') 
+            }
+        })
+        .then(res => res.json())
+        .then(response => {
+            console.log(response)
+            if(response.status === "success"){
+                alert("status updated to " + status)
+                console.log(response)
+            } else {
+                alert(response.message)
+            }
+        })
+        .catch(error => {
+            alert("OOPS try again")
+        });
+}
+
+function updateLocation(parcel_id) {
+    let location = document.getElementById ( "location" ).innerText
+    let loc_url = "https://senditv2.herokuapp.com/api/v2/parcels/" + parcel_id +"/presentLocation";
+    console.log(loc_url)
+    let destination = {
+        location : location
+    }
+    fetch(loc_url, {
             method: 'PUT',
             body: JSON.stringify(destination),
             headers:{
