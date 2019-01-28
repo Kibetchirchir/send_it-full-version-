@@ -24,13 +24,13 @@
             Please provide the following information
         </div>
         <div class="normaltext">
-            <form id="form1" action="admindashboard.html">
+            <form>
                 <label class="fa fa-envelope">Email</label><br>
-                <input type="email" required placeholder="chirchir@gmail.com"><br>
+                <input id="email" type="email" required placeholder="chirchir@gmail.com"><br>
                 <label class="fa fa-key">Password</label><br>
-                <input type="password" required placeholder="**********"><br>
+                <input id="password" type="password" required placeholder="**********"><br>
                 <button type="cancel" id="button_failed" form="form1" value="cancel">Cancel</button>
-                <button type="submit" id="button_success" form="form1" value="Submit">Login</button>
+                <button type="button" id="button_success" onclick="signIn()">Login</button>
             </form>
         </div>
     </div>
