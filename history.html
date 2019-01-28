@@ -5,8 +5,7 @@
     <title>Sendit!</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
+    <script type="text/javascript" src="assets/js/history.js"></script>
 </head>
 <body onload="allParcels()">
 <div class="topnav">
@@ -72,60 +71,4 @@
     </div>
 </div>
 </body>
-<script type="text/javascript">
-function allParcels() {
-    let parcel_url = "https://senditv2.herokuapp.com/api/v2/parcels";
-    fetch(parcel_url, {
-            method: 'GET',
-            headers:{
-                'Content-Type': 'application/json',
-                'Authorization' : "Bearer " + localStorage.getItem('token') 
-            }
-        })
-        .then(res => res.json())
-        .then(response => {
-            // console.log(response)
-            let parcels = response.message
-            displayTable(parcels)
-        })
-        .catch(error => {
-            alert("OOPS try again")
-            console.log(error)
-        });    
-}
-function displayTable(parcels){
-    parcels.forEach(item => {
-            if (item.status != "delivered") {
-              let tr = document.createElement("tr");
-              tr.innerHTML = `
-                    <td contenteditable="true">${item.parcel_id}</td>
-                    <td contenteditable="true">${item.parcel_type}</td>
-                    <td contenteditable="true">${item.drop_off}</td>
-                    <td contenteditable="true">${item.Recepient_number}</td>
-                    <td contenteditable="true">${item.Recepeint_name}</td>
-                    <td contenteditable="true">${item.drop_off}</td>
-                    <td contenteditable="true">${item.Weight}</td>
-                    <td>${item.date_ordered}</td>
-                    <td>ontrasit<span class="fa fa-truck"></span></td>
-                    `;
-              document.getElementById("data").appendChild(tr);
-            }
-            if(item.status === "delivered"){
-                let tr = document.createElement("tr");
-                tr.innerHTML = `
-                    <td contenteditable="true">${item.parcel_id}</td>
-                    <td contenteditable="true">${item.parcel_type}</td>
-                    <td contenteditable="true">${item.drop_off}</td>
-                    <td contenteditable="true">${item.Recepient_number}</td>
-                    <td contenteditable="true">${item.Recepeint_name}</td>
-                    <td contenteditable="true">${item.drop_off}</td>
-                    <td contenteditable="true">${item.Weight}</td>
-                    <td>${item.date_ordered}</td>
-                    <td>delivered<span class="fa fa-check"></span></td>
-                    `;
-                document.getElementById("delivered").appendChild(tr);
-            }
-          });
-}
-</script>
 </html>
