@@ -120,8 +120,8 @@ function displayTable(parcels){
                     <td contenteditable="true">${item.drop_off}</td>
                     <td contenteditable="true">${item.Weight}</td>
                     <td id="status" contenteditable="true">${item.status}<span class="fa fa-truck"></span></td>
-                    <td><button onclick="updateStatus('${item.parcel_id}')" class="confirm" value="Submit">change</button></td>
-                    <td><button onclick="Cancelled()" class="cancel" value="Submit">cancel</button></td>
+                    <td><button onclick="updateStatus('${item.parcel_id}')" class="confirm" value="Submit">change status</button></td>
+                    <td><button onclick="updateLocation('${item.parcel_id}')" class="confirm" value="Submit">change Location</button></td>
                     `;
               document.getElementById("data").appendChild(tr);
             }
